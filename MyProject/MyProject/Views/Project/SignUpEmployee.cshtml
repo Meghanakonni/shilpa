@@ -1,0 +1,63 @@
+﻿@model MyProject.Models.EmployeeLogin
+
+
+@{ ViewBag.Title = "SignUpEmployee"; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .login-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .login-button:hover {
+                background-color: #2980b9;
+            }
+    </style>
+</head>
+<body>
+    <h2>Employee Signup</h2>
+
+    @using (Html.BeginForm("SignUpEmployee", "Project", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
+                <form>
+                    <label for="Name">Username</label>
+                    @Html.TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                    <label for="Password">Password</label>
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                    <button type="submit">Sign Up</button>
+                </form>}
+</body>
+</html>

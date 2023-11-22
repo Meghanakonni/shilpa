@@ -1,0 +1,39 @@
+﻿@model Project.Models.Register
+
+@{
+    ViewBag.Title = "UserRegister";
+}
+
+<h2>UserRegister</h2>
+<html>
+<body>
+
+    @using (Html.BeginForm("UserRegister", "Project", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    <form>
+        <label for="Name">UserID</label>
+        @Html.TextBoxFor(model => model.UserID)
+        @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+
+        <label for="Name">FirstName</label>
+        @Html.TextBoxFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+        <label for="Name">LastName</label>
+        @Html.TextBoxFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+        <label for="Password">Password</label>
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+        <label for="Password">Confirm Password</label>
+        @Html.PasswordFor(model => model.ConfirmPassword)
+        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+        <button type="submit">Register</button>
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+    </form>}
+</body>
+</html>
